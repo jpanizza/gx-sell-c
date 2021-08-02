@@ -7,7 +7,7 @@ provider "ibm" {
   /* Uncomment ibmcloud_api_key while testing from CLI */
   //ibmcloud_api_key      = var.api_key
   generation            = 2 
-  region                = var.region
+  region                = "us-south"
   ibmcloud_timeout      = 300
 }
 
@@ -87,7 +87,7 @@ resource "ibm_is_security_group_rule" "vsi_sg_rule_out_all" {
 resource "ibm_is_instance" "sample_vsi" {
   depends_on = [ibm_is_security_group_rule.vsi_sg_rule_out_all]
   name           = var.vsi_instance_name
-  image          = local.image_map[var.region]
+  image          = "r006-0bb26deb-651f-449c-9842-3d28b837edae"
   profile        = data.ibm_is_instance_profile.vsi_profile.name
   resource_group = data.ibm_is_subnet.vsi_subnet.resource_group
 
