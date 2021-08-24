@@ -83,7 +83,7 @@ resource "ibm_is_security_group_rule" "vsi_sg_rule_out_all" {
   remote    = "0.0.0.0/0"
 }
  
-//vsi instance 
+//vsi instance
 resource "ibm_is_instance" "sample_vsi" {
   depends_on = [ibm_is_security_group_rule.vsi_sg_rule_out_all]
   name           = var.vsi_instance_name
